@@ -1,0 +1,26 @@
+{
+  "name": "static-engine-converter-file",
+  "version": "1.0.0",
+  "description": "A converter for static-engine-content.",
+  "main": "index.js",
+  "repository": "erickmerchant/static-engine-converter-file",
+  "keywords": [
+      "static-engine"
+  ],
+  "author": "Erick Merchant <erickmerchant@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/erickmerchant/static-engine-converter-file/issues"
+  },
+  "homepage": "https://github.com/erickmerchant/static-engine-converter-file",
+  "dependencies": {
+    "moment": "^2.7.0"
+  },
+  "peerDependencies": {
+    "static-engine-content": "^2.0.0"
+  },
+  "devDependencies": {
+    "chai": "^1.9.2",
+    "mocha": "^2.0.0"
+  }
+}
