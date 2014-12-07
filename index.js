@@ -1,20 +1,21 @@
 var moment = require('moment');
 var path = require('path');
 var date_formats = ["YYYY-MM-DD", "YYYY-MM-DD-HHmmss"];
+var Promise = require('es6-promise').Promise;
 
-module.exports = function () {
+module.exports = function (page) {
 
-    return function (file, page, next) {
+    return new Promise(function(resolve, reject){
 
-        var ext = path.extname(file);
+        var ext = path.extname(page.file);
 
         var parts;
 
-        page.slug = path.basename(file, ext);
+        page.slug = path.basename(page.file, ext);
 
-        page.category = path.dirname(file);
+        page.category = path.dirname(page.file);
 
-        parts = path.basename(file, ext).split('.');
+        parts = path.basename(page.file, ext).split('.');
 
         if (parts.length >= 2) {
 
@@ -30,7 +31,7 @@ module.exports = function () {
 
             page.date = moment();
         }
-
-        return next(file, page);
-    };
+        
+        resolve(page);
+    });
 };

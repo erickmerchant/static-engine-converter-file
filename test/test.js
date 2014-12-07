@@ -1,4 +1,4 @@
-var file = require('../index.js')();
+var file = require('../index.js');
 var assert = require('chai').assert;
 var moment = require('moment');
 
@@ -6,7 +6,7 @@ describe('plugin', function(){
 
     it('should add certain properties to the page object based on the file name', function(done){
 
-        file('category-a/2015-01-01.slug-a.txt', {}, function(file, page, next){
+        file({file: 'category-a/2015-01-01.slug-a.txt'}).then(function(page){
 
             assert.deepEqual(page.category, 'category-a');
 
