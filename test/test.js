@@ -6,7 +6,7 @@ describe('plugin', function(){
 
     it('should add certain properties to the page object based on the file name', function(done){
 
-        file({file: 'category-a/2015-01-01.slug-a.txt'}).then(function(page){
+        file({file: 'category-a/2015-01-01.slug-a.txt'}, function(err, page){
 
             assert.deepEqual(page.category, 'category-a');
 
