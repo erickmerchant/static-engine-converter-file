@@ -6,15 +6,29 @@ describe('plugin', function(){
 
     it('should add certain properties to the page object based on the file name', function(done){
 
-        file({file: 'category-a/2015-01-01.slug-a.txt'}, function(err, page){
+        file([{file: 'category-a/2015-01-01.slug-a.txt'}], function(err, pages){
 
-            assert.deepEqual(page.category, 'category-a');
+            if(err) {
 
-            assert.deepEqual(page.date.format("YYYY-MM-DD"), '2015-01-01');
+                done(err);
+            }
+            else {
 
-            assert.deepEqual(page.slug, 'slug-a');
+                pages[0].date = pages[0].date.format("YYYY-MM-DD");
 
-            done();
+                assert.deepEqual(pages[0], {
+
+                    category: 'category-a',
+
+                    file: "category-a/2015-01-01.slug-a.txt",
+
+                    date: '2015-01-01',
+
+                    slug: 'slug-a',
+                });
+
+                done();
+            }
         });
     });
 });
