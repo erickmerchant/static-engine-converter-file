@@ -1,6 +1,6 @@
 var moment = require('moment');
 var path = require('path');
-var date_formats = ["YYYY-MM-DD", "YYYY-MM-DD-HHmmss"];
+var dateFormats = ["YYYY-MM-DD", "YYYY-MM-DD-HHmmss"];
 
 module.exports = function (pages, done) {
 
@@ -18,7 +18,7 @@ module.exports = function (pages, done) {
 
         if (parts.length >= 2) {
 
-            page.date = moment(parts[0], date_formats);
+            page.date = moment(parts[0], dateFormats);
 
             if (page.date && page.date.isValid()) {
 
