@@ -1,5 +1,5 @@
 var file = require('../index.js');
-var assert = require('chai').assert;
+var assert = require('assert');
 var moment = require('moment');
 
 describe('plugin', function(){
