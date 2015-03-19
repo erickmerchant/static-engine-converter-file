@@ -7,6 +7,9 @@
   "keywords": [
     "static-engine"
   ],
+  "scripts": {
+      "test": "mocha"
+  },
   "author": "Erick Merchant <erickmerchant@gmail.com>",
   "license": "MIT",
   "bugs": {

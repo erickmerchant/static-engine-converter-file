@@ -1,4 +1,4 @@
-var file = require('../index.js');
+var file = require('../index.js')('YYYY-MM-DD');
 var assert = require('assert');
 var moment = require('moment');
 

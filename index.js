@@ -1,36 +1,38 @@
 var moment = require('moment');
 var path = require('path');
-var dateFormats = ["YYYY-MM-DD", "YYYY-MM-DD-HHmmss"];
 
-module.exports = function (pages, done) {
+module.exports = function(dateFormats) {
 
-    pages.forEach(function(page){
+    return function (pages, done) {
 
-        var ext = path.extname(page.file);
+        pages.forEach(function(page){
 
-        var parts;
+            var ext = path.extname(page.file);
 
-        page.slug = path.basename(page.file, ext);
+            var parts;
 
-        page.category = path.dirname(page.file);
+            page.slug = path.basename(page.file, ext);
 
-        parts = path.basename(page.file, ext).split('.');
+            page.category = path.dirname(page.file);
 
-        if (parts.length >= 2) {
+            parts = path.basename(page.file, ext).split('.');
 
-            page.date = moment(parts[0], dateFormats);
+            if (parts.length >= 2) {
 
-            if (page.date && page.date.isValid()) {
+                page.date = moment(parts[0], dateFormats);
 
-                page.slug = parts.slice(1).join('.');
+                if (page.date && page.date.isValid()) {
+
+                    page.slug = parts.slice(1).join('.');
+                }
             }
-        }
 
-        if (!(page.date && page.date.isValid())) {
+            if (!(page.date && page.date.isValid())) {
 
-            page.date = moment();
-        }
-    });
+                page.date = moment();
+            }
+        });
 
-    done(null, pages);
-};
+        done(null, pages);
+    };
+}
