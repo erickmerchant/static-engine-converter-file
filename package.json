@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/erickmerchant/static-engine-converter-file",
   "dependencies": {
-    "moment": "^2.7.0"
+    "moment": "^2.7.0",
+    "object-assign": "^2.0.0",
+    "path-match": "^1.2.2"
   },
   "devDependencies": {
     "mocha": "^2.0.0"

@@ -1,37 +1,34 @@
-var moment = require('moment');
-var path = require('path');
+var pathMatch = require('path-match')();
+var assign = require('object-assign');
 
-module.exports = function(dateFormats) {
+module.exports = function(route, modifiers) {
+
+    var matcher = pathMatch(route);
 
     return function (pages, done) {
 
-        pages.forEach(function(page){
+        try
+        {
+            pages = pages.map(function(page){
 
-            var ext = path.extname(page.file);
+                var params = matcher(page.file);
+                var k;
 
-            var parts;
+                for(k in params) {
 
-            page.slug = path.basename(page.file, ext);
+                    if(typeof modifiers[k] != 'undefined') {
 
-            page.category = path.dirname(page.file);
-
-            parts = path.basename(page.file, ext).split('.');
-
-            if (parts.length >= 2) {
-
-                page.date = moment(parts[0], dateFormats);
-
-                if (page.date && page.date.isValid()) {
-
-                    page.slug = parts.slice(1).join('.');
+                        params[k] = modifiers[k](params[k]);
+                    }
                 }
-            }
 
-            if (!(page.date && page.date.isValid())) {
-
-                page.date = moment();
-            }
-        });
+                return assign({}, page, params);
+            });
+        }
+        catch(e)
+        {
+            done(e)
+        }
 
         done(null, pages);
     };

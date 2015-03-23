@@ -1,6 +1,13 @@
-var file = require('../index.js')('YYYY-MM-DD');
+var file = require('../index.js');
 var assert = require('assert');
 var moment = require('moment');
+
+file = file(':categories+/:date.:slug.txt', {
+    date: function(date) {
+
+        return moment(date, 'YYYY-MM-DD');
+    }
+});
 
 describe('plugin', function(){
 
@@ -18,7 +25,7 @@ describe('plugin', function(){
 
                 assert.deepEqual(pages[0], {
 
-                    category: 'category-a',
+                    categories: ['category-a'],
 
                     file: "category-a/2015-01-01.slug-a.txt",
 
