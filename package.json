@@ -1,7 +1,7 @@
 {
   "name": "static-engine-converter-file",
   "version": "6.0.1",
-  "description": "A converter for static-engine-content.",
+  "description": "Plugin for static-engine. Extracts properties from the file property of each object in the collection.",
   "main": "index.js",
   "repository": "erickmerchant/static-engine-converter-file",
   "keywords": [
