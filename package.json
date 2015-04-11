@@ -8,7 +8,7 @@
     "static-engine"
   ],
   "scripts": {
-    "test": "mocha"
+    "test": "standard && mocha"
   },
   "author": "Erick Merchant <erickmerchant@gmail.com>",
   "license": "MIT",
@@ -22,6 +22,7 @@
     "path-match": "^1.2.2"
   },
   "devDependencies": {
-    "mocha": "^2.0.0"
+    "mocha": "^2.0.0",
+    "standard": "^3.5.0"
   }
 }
