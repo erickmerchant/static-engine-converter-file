@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/erickmerchant/static-engine-params",
   "dependencies": {
-    "object-assign": "^2.0.0",
+    "object-assign": "^3.0.0",
     "path-match": "^1.2.2"
   },
   "devDependencies": {
