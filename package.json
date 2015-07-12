@@ -1,6 +1,6 @@
 {
   "name": "static-engine-params",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Plugin for static-engine. Extracts properties from the file property of each object in the collection.",
   "main": "index.js",
   "repository": "erickmerchant/static-engine-params",
