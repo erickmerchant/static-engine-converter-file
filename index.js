@@ -1,5 +1,5 @@
 var pathMatch = require('path-match')()
-var assign = require('object-assign')
+var assign = require('lodash.assign')
 
 module.exports = function (route, modifiers) {
   var matcher = pathMatch(route)
