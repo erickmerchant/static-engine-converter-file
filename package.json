@@ -8,8 +8,8 @@
     "static-engine"
   ],
   "scripts": {
-    "test": "standard && mocha",
-    "cover": "istanbul cover node_modules/.bin/_mocha"
+    "test": "standard && tap test.js",
+    "cover": "tap test.js --cov --coverage-report=html"
   },
   "author": "Erick Merchant <erickmerchant@gmail.com>",
   "license": "MIT",
@@ -22,8 +22,7 @@
     "path-match": "^1.2.2"
   },
   "devDependencies": {
-    "istanbul": "^0.4.0",
-    "mocha": "^2.0.0",
-    "standard": "^5.0.0"
+    "standard": "^5.0.0",
+    "tap": "^2.2.0"
   }
 }

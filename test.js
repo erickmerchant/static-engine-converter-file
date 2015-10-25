@@ -1,7 +1,5 @@
 var plugin = require('./index.js')
-var assert = require('assert')
-var describe = require('mocha').describe
-var it = require('mocha').it
+var tap = require('tap')
 var file
 
 file = plugin(':categories+/:date.:slug.txt', {
@@ -10,32 +8,30 @@ file = plugin(':categories+/:date.:slug.txt', {
   }
 })
 
-describe('plugin', function () {
-  it('should add certain properties to the page object based on the file name', function (done) {
-    file([{file: 'category-a/2015-01-01.slug-a.txt'}], function (err, pages) {
-      assert.equal(null, err)
-      assert.deepEqual(pages[0], {
-        categories: ['category-a'],
+tap.test('should add certain properties to the page object based on the file name', function (t) {
+  file([{file: 'category-a/2015-01-01.slug-a.txt'}], function (err, pages) {
+    t.equal(null, err)
+    t.deepEqual(pages[0], {
+      categories: ['category-a'],
 
-        file: 'category-a/2015-01-01.slug-a.txt',
+      file: 'category-a/2015-01-01.slug-a.txt',
 
-        date: ['2015', '01', '01'],
+      date: ['2015', '01', '01'],
 
-        slug: 'slug-a'
-      })
-
-      done()
+      slug: 'slug-a'
     })
+
+    t.end()
   })
+})
 
-  it('non-matching files should be handled without error', function (done) {
-    file([{file: 'non-matching/file.txt'}], function (err, pages) {
-      assert.equal(null, err)
-      assert.deepEqual(pages[0], {
-        file: 'non-matching/file.txt'
-      })
-
-      done()
+tap.test('non-matching files should be handled without error', function (t) {
+  file([{file: 'non-matching/file.txt'}], function (err, pages) {
+    t.equal(null, err)
+    t.deepEqual(pages[0], {
+      file: 'non-matching/file.txt'
     })
+
+    t.end()
   })
 })
