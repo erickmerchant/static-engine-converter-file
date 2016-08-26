@@ -22,7 +22,7 @@
     "path-match": "^1.2.2"
   },
   "devDependencies": {
-    "standard": "^7.0.0",
+    "standard": "^8.0.0",
     "tap": "^6.3.0"
   }
 }
