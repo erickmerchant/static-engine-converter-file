@@ -1,5 +1,5 @@
 var plugin = require('./index.js')
-var tap = require('tap')
+var test = require('tape')
 var file
 
 file = plugin(':categories+/:date.:slug.txt', {
@@ -8,7 +8,7 @@ file = plugin(':categories+/:date.:slug.txt', {
   }
 })
 
-tap.test('should add certain properties to the page object based on the file name', function (t) {
+test('should add certain properties to the page object based on the file name', function (t) {
   file([{file: 'category-a/2015-01-01.slug-a.txt'}], function (err, pages) {
     t.equal(null, err)
     t.deepEqual(pages[0], {
@@ -25,7 +25,7 @@ tap.test('should add certain properties to the page object based on the file nam
   })
 })
 
-tap.test('non-matching files should be handled without error', function (t) {
+test('non-matching files should be handled without error', function (t) {
   file([{file: 'non-matching/file.txt'}], function (err, pages) {
     t.equal(null, err)
     t.deepEqual(pages[0], {
